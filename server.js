@@ -29,7 +29,8 @@ app.use((req,res,next) => {
 });
 
 app.use((req,res,next) => {
-    //res.render('maintenance.hbs');
+    //res.render('maintenance.hbs'); //test
+    
     if(req.path === '/dom') {
         res.redirect('/bad');
 
