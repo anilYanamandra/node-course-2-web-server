@@ -12,6 +12,16 @@ hbs.registerHelper('screamIt',(text) => {
     return text.toUpperCase();
 })
 
+hbs.registerHelper('list', (items,options) => {
+    var out = "<ul>";
+
+    for(var i=0, l=items.length; i<l; i++) {
+      out = out + "<li>" + options.fn(items[i]) + "</li>";
+    }
+  
+    return out + "</ul>";
+});
+
 //configure express js 
 app.set('view engine', 'hbs');
 app.use((req,res,next) => { 
@@ -47,6 +57,10 @@ app.get('/',(req,res) => {
 //res.contentType('application/json');
 //res.send('<h1>Hello Express</h1>');
 res.render('home.hbs', {pageTitle: 'Home Page', welcomeMessage: 'Welcome aboard'});
+});
+
+app.get('/projects',(req, res) => {
+   res.render('projects.hbs',{pageTitle: 'My Projects', projects:[{name: "elegOrg", link: "https://github.com/anilYanamandra/elegOrg"},{name: "nodeCode", link: "https://github.com/anilYanamandra/node-course-2-web-server"}]}) 
 });
 
 /* default route */

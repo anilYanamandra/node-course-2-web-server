@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+    <head> 
+        <title> Some Website </title>
+        <meta charset="utf-8">
+    </head>
+        <body>
+           {{>header}}
+            <p>
+                {{#list projects}}{{name}} {{link}}{{/list}}
+            </p>
+{{>footer}}
+        </body>
+</html>
+
+
+
