@@ -3,6 +3,8 @@ const fs = require('fs');
 const hbs = require('hbs');
 const port = process.env.PORT ||3000 ;
 var app = express();
+
+/*Handle Bars Configuration  Start */ 
 hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('getCurrentYear',() =>{
 return new Date().getFullYear();
@@ -21,9 +23,11 @@ hbs.registerHelper('list', (items,options) => {
   
     return out + "</ul>";
 });
+app.set('view engine', 'hbs');
+/*Handle Bars Configuration  End */ 
 
 //configure express js 
-app.set('view engine', 'hbs');
+
 app.use((req,res,next) => { 
 
     var now = new Date().toString(); 
