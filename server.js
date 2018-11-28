@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
+const port = process.env.PORT ||3000 ;
 var app = express();
 hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('getCurrentYear',() =>{
@@ -30,7 +31,7 @@ app.use((req,res,next) => {
 
 app.use((req,res,next) => {
     //res.render('maintenance.hbs'); //test
-    
+
     if(req.path === '/dom') {
         res.redirect('/bad');
 
@@ -59,6 +60,6 @@ app.get('/bad', (req,res) => {
     res.contentType('application/json');
     res.send(json);
 })
-app.listen(3000,() => {
-    console.log('Server is up and running on 3000');
+app.listen(port,() => {
+    console.log(`Server is up and running on ${port}`);
 });
